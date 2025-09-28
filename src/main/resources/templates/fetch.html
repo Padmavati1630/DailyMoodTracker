@@ -1,104 +1,100 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Mood Tracker Records</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(to bottom, #c1e1ec, #f0f9ff);
-            margin: 0;
-            padding: 0;
-        }
+<meta charset="UTF-8">
+<title>Mood Tracker Records</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500&family=Playfair+Display:ital,wght@1,500&display=swap');
 
-        .container {
-            width: 90%;
-            max-width: 800px;
-            margin: 50px auto;
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
+body {
+    font-family: 'Playfair Display', serif;
+    /* smoother gradient: very soft cream to soft olive */
+    background: linear-gradient(135deg, #fefcf5, #e6f0d9);
+    margin: 0;
+    padding: 0;
+}
 
-        h1 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 20px;
-        }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-        }
+.container {
+    width: 90%;
+    max-width: 900px;
+    margin: 50px auto;
+    background-color: #fffef6;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+}
 
-        table, th, td {
-            border: 1px solid #ccc;
-        }
+h1 {
+    font-family: 'Cinzel', serif;
+    color: #556b2f;
+    text-align: center;
+    font-style: italic;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+}
 
-        th, td {
-            padding: 10px;
-            text-align: center;
-            color: #555;
-        }
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
 
-        th {
-            background-color: #f2f2f2;
-        }
+th, td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #a3b18a;
+    color: #4b4a3f;
+}
 
-        a {
-            text-decoration: none;
-            color: white;
-            background-color: #4CAF50;
-            padding: 5px 10px;
-            border-radius: 4px;
-            transition: background 0.3s;
-        }
+th {
+    background-color: #e2e0d6;
+}
 
-        a:hover {
-            background-color: #45a049;
-        }
-    </style>
+a {
+    text-decoration: none;
+    color: white;
+    background-color: #556b2f;
+    padding: 6px 12px;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+a:hover {
+    background-color: #3e4f1f;
+}
+</style>
 </head>
 <body>
-    <div class="container">
-        <h1>Mood Tracker Records</h1>
+<div class="container">
+    <h1>Mood Tracker Records</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Mood</th>
+                <th>Intensity</th>
+                <th>Notes</th>
+                <th>Activity</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="tracker : ${mood}">
+                <td th:text="${tracker.date.format(T(java.time.format.DateTimeFormatter).ofPattern('yyyy-MM-dd'))}">Date</td>
+                <td th:text="${tracker.mood}">Mood</td>
+                <td th:text="${tracker.intensity}">Intensity</td>
+                <td th:text="${tracker.notes}">Notes</td>
+                <td th:text="${tracker.activity}">Activity</td>
+                <td><a th:href="'/update?id=' + ${tracker.id}">Edit</a></td>
+                <td><a th:href="'/delete?id=' + ${tracker.id}">Remove</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Mood</th>
-                    <th>Intensity</th>
-                    <th>Notes</th>
-                    <th>Activity</th>
-                    <th>Update</th>
-                    <th>Delete</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="tracker : ${mood}">
-                    <td th:text="${tracker.date.format(T(java.time.format.DateTimeFormatter).ofPattern('yyyy-MM-dd'))}">Date</td>
-                    <td th:text="${tracker.mood}">Mood</td>
-                    <td th:text="${tracker.intensity}">Intensity</td>
-                    <td th:text="${tracker.notes}">Notes</td>
-                    <td th:text="${tracker.activity}">Activity</td>
-                    <td>
-                        <a th:href="'/update?id=' + ${tracker.id}">Edit</a>
-                    </td>
-                    <td>
-                        <a th:href="'/delete?id=' + ${tracker.id}">Remove</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <script th:if="${message}">
+<script th:if="${message}">
     alert('[[${message}]]');
 </script>
-
-
 </body>
 </html>

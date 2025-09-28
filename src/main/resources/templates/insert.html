@@ -4,80 +4,83 @@
 <meta charset="UTF-8">
 <title>Add Mood Record</title>
 <style>
-    body {
-        font-family: Arial, sans-serif;
-        background: linear-gradient(to bottom, #c1e1ec, #f0f9ff); /* soft blue gradient */
-        margin: 0;
-        padding: 0;
-    }
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap');
 
-    .container {
-        width: 300px;
-        margin: 50px auto;
-        background-color: #ffffff;
-        padding: 25px;
-        border-radius: 8px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        text-align: center;
-    }
+body {
+    font-family: 'Playfair Display', serif;
+    /* smoother gradient: very soft cream to soft olive */
+    background: linear-gradient(135deg, #fefcf5, #e6f0d9);
+    margin: 0;
+    padding: 0;
+}
 
-    h1 {
-        color: #333;
-        font-size: 20px;
-        margin-bottom: 20px;
-    }
 
-    input[type="text"],
-    input[type="date"],
-    input[type="number"] {
-        width: 100%;
-        padding: 6px;
-        margin-bottom: 15px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
-    }
+.container {
+    width: 90%;
+    max-width: 500px;
+    margin: 60px auto;
+    background: #fffef6;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+    text-align: center;
+}
 
-    input[type="radio"] {
-        margin-right: 5px;
-        margin-top: 10px;
-    }
+h1 {
+    color: #556b2f;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+}
 
-    button {
-        width: 100%;
-        padding: 8px;
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 14px;
-        transition: background 0.3s;
-    }
+input[type="text"], input[type="number"], input[type="date"], input[name="Notes"], input[name="activity"] {
+    width: 90%;
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 12px;
+    border: 1px solid #a3b18a;
+    box-sizing: border-box;
+    transition: 0.3s;
+}
 
-    button:hover {
-        background-color: #45a049;
-    }
+input:focus {
+    border-color: #556b2f;
+    box-shadow: 0 0 5px #556b2f;
+}
+
+button {
+    background-color: #556b2f;
+    color: #fffef6;
+    border: none;
+    border-radius: 25px;
+    padding: 12px 35px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #3e4f1f;
+}
 </style>
 </head>
 <body>
 <div class="container">
-    <h1>Add Record</h1>
+    <h1>Add Mood Record</h1>
     <form action="/insert" method="post">
-        <input type="date" name="date" placeholder="Enter Date">
-        <input type="text" name="mood" placeholder="Enter Your Mood">
-        <input type="number" name="intensity" placeholder="Enter Mood Intensity" min="1" max="10">
-        <input type="text" name="notes" placeholder="Enter Notes">
-        <input type="text" name="activity" placeholder="Enter Activity">
-
-        <label>Mood Rating:</label><br>
+        <input type="date" name="Date" placeholder="Enter Date"><br>
+        <input type="text" name="Mood" placeholder="Enter Your Mood"><br>
+        <input type="number" name="Intensity" placeholder="Enter Mood Intensity" min="1" max="10"><br>
+        <input type="text" name="Notes" placeholder="Enter Notes"><br>
+        <input type="text" name="activity" placeholder="Enter Activity"><br>
+        Mood Rating: 
         <input type="radio" name="rating" value="1">😍
         <input type="radio" name="rating" value="2">🙄
         <input type="radio" name="rating" value="3">🤬
         <input type="radio" name="rating" value="4">😭
         <input type="radio" name="rating" value="5">🫠
-
-        <button type="submit">Add</button>
+        <br><br>
+        <button>Add Record</button>
     </form>
 </div>
 </body>

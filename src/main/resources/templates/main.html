@@ -2,58 +2,66 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>MOODTRACKER DATABASE</title>
+<title>Daily Mood Tracker</title>
 <style>
-    body {
-        font-family: Arial, sans-serif;
-        background: linear-gradient(to bottom, #c1e1ec, #f0f9ff); /* soft blue gradient */
-        margin: 0;
-        padding: 0;
-    }
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500&family=Playfair+Display:ital,wght@1,500&display=swap');
 
-    .container {
-        width: 300px;
-        margin: 100px auto;
-        background-color: #ffffff;
-        padding: 30px;
-        border-radius: 8px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        text-align: center;
-    }
+body {
+    font-family: 'Playfair Display', serif;
+    /* smoother gradient: very soft cream to soft olive */
+    background: linear-gradient(135deg, #fefcf5, #e6f0d9);
+    margin: 0;
+    padding: 0;
+}
 
-    h1 {
-        color: #333;
-        font-size: 22px;
-        margin-bottom: 30px;
-    }
 
-    a button {
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 15px;
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 16px;
-        transition: background 0.3s;
-    }
+.container {
+    width: 90%;
+    max-width: 500px;
+    margin: 80px auto;
+    background-color: #fffef6;
+    padding: 35px 30px;
+    border-radius: 20px;
+    box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+    text-align: center;
+}
 
-    a button:hover {
-        background-color: #45a049;
-    }
+h1 {
+    font-family: 'Cinzel', serif;
+    color: #556b2f;
+    font-style: italic;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+}
+
+button {
+    background-color: #556b2f;
+    color: #fffef6;
+    border: none;
+    border-radius: 25px;
+    padding: 12px 35px;
+    cursor: pointer;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 1px;
+    font-weight: bold;
+    margin: 10px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #3e4f1f;
+}
 </style>
 </head>
 <body>
-    <div class="container">
-        <h1>MOODTRACKER DATABASE</h1>
-        <a href="/insert"><button>Insert Record</button></a>
-        <a href="/fetch"><button>Fetch Records</button></a>
-    </div>
+<div class="container">
+    <h1>Daily Mood Tracker</h1>
+    <a href="/insert"><button>Insert Record</button></a>
+    <a href="/fetch"><button>Fetch Records</button></a>
+</div>
 
-    <script th:inline="javascript" th:if="${message}">
-        alert([[${message}]])
-    </script>
+<script th:inline="javascript" th:if="${message}">
+    alert('[[${message}]]');
+</script>
 </body>
 </html>
