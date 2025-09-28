@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>MOODTRACKER DATABASE</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(to bottom, #c1e1ec, #f0f9ff); /* soft blue gradient */
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        width: 300px;
+        margin: 100px auto;
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        text-align: center;
+    }
+
+    h1 {
+        color: #333;
+        font-size: 22px;
+        margin-bottom: 30px;
+    }
+
+    a button {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background 0.3s;
+    }
+
+    a button:hover {
+        background-color: #45a049;
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <h1>MOODTRACKER DATABASE</h1>
+        <a href="/insert"><button>Insert Record</button></a>
+        <a href="/fetch"><button>Fetch Records</button></a>
+    </div>
+
+    <script th:inline="javascript" th:if="${message}">
+        alert([[${message}]])
+    </script>
+</body>
+</html>

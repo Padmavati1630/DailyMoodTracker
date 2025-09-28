@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Update Mood Tracker</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(to bottom, #c1e1ec, #f0f9ff); /* soft blue gradient */
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        width: 300px;
+        margin: 50px auto;
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+        font-size: 20px;
+    }
+
+    label {
+        display: block;
+        margin-top: 10px;
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: #555;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    input[type="number"] {
+        width: 100%;
+        padding: 6px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    input[type="radio"] {
+        margin-right: 5px;
+    }
+
+    button {
+        margin-top: 15px;
+        width: 100%;
+        padding: 8px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: background 0.3s;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>Update Record</h1>
+    <form action="/update" method="post">
+        <label>ID:</label>
+        <input type="text" name="id" th:value="${tracker.id}" readonly>
+
+        <label>Date:</label>
+        <input type="date" name="date" th:value="${tracker.date.format(T(java.time.format.DateTimeFormatter).ofPattern('yyyy-MM-dd'))}">
+
+        <label>Mood:</label>
+        <input type="text" name="mood" th:value="${tracker.mood}">
+
+        <label>Intensity:</label>
+        <input type="number" name="intensity" th:value="${tracker.intensity}">
+
+        <label>Notes:</label>
+        <input type="text" name="notes" th:value="${tracker.notes}">
+
+        <label>Activity:</label>
+        <input type="text" name="activity" th:value="${tracker.activity}">
+
+        <label>Rating:</label>
+        <input type="radio" name="rating" value="1" th:checked="${tracker.rating==1}">😍
+        <input type="radio" name="rating" value="2" th:checked="${tracker.rating==2}">🙄
+        <input type="radio" name="rating" value="3" th:checked="${tracker.rating==3}">🤬
+        <input type="radio" name="rating" value="4" th:checked="${tracker.rating==4}">😭
+        <input type="radio" name="rating" value="5" th:checked="${tracker.rating==5}">🫠
+
+        <button type="submit">Update</button>
+    </form>
+</div>
+</body>
+</html>
